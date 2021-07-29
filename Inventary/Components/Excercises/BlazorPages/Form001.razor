@@ -1,0 +1,38 @@
+﻿<div class="card">
+    <div class="card-header">
+        @tittle
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Datos</h5>
+        <br>
+
+        <div class="form-group">
+            <label for="inputName">Nombre</label>
+            <input id="inputName" type="text" class="form-control" @bind-value="@nombre" placeholder="Ingrese su nombre">
+        </div>
+
+        <button @onclick="TextChanged">Aceptar</button>
+        <label id="labelNombre">@oNombre</label>
+    </div>
+</div>
+
+@code{
+    [Parameter]
+    public string Tittle { get; set; }
+
+    private string tittle = string.Empty;
+
+    string nombre = "";
+    string oNombre = "";
+
+    private void TextChanged()
+    {
+        oNombre = nombre;
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        tittle = Tittle;
+    }
+
+}
